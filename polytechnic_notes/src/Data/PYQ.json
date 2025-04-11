@@ -1,0 +1,25 @@
+[
+    {
+      "id": 1,
+      "title": "Computer architecture and hardware maintenance notes",
+      "branch": "Information Technology",
+      "semester": "3",
+      "link": "https://drive.google.com/file/d/1bzLtrMOZty2yC1r0_gVVlmdrGJ-4XiKn/view?usp=drivesdk",
+        "contributor":"Patel Verma"
+      
+    },
+    {
+      "id": 2,
+      "title": "Data Structures using C notes",
+      "branch": "Information Technology",
+      "semester": "3",
+      "link":"https://drive.google.com/file/d/1bzLtrMOZty2yC1r0_gVVlmdrGJ-4XiKn/view?usp=drivesdk" 
+    },
+    {
+      "id": 3,
+      "title": "Internet & web technology notes(Javascript)",
+      "branch": "Information Technology",
+      "semester": "3",
+      "link":"https://drive.google.com/file/d/1bzLtrMOZty2yC1r0_gVVlmdrGJ-4XiKn/view?usp=drivesdk",
+      "tags": ["Javascript","Web technology"]
+    }]
