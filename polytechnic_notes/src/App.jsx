@@ -5,7 +5,7 @@ import Hero from "./Pages/Hero.jsx";
 import Upload from "./Pages/Upload";
 import Header from "./Component/Header";
 import Footer from "./Component/Footer";
-import DownloadPage from "./Pages/DownloadPage.jsx";
+import DownloadPage from "./Pages/Downloadpage.jsx";
 import SyllabusPage from "./Pages/Syllabuspage.jsx";
 import UserDashboard from "./Pages/UserDashboard.jsx";
 import { Analytics } from "@vercel/analytics/react";
