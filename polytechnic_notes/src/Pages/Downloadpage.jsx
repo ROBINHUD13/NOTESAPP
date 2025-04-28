@@ -67,7 +67,7 @@ function DownloadPage() {
 
   return (
     <div
-      className={`min-h-screen relative pt-20 px-6 pb-12 transition-colors duration-300 ${isDarkMode ? "bg-gray-900 text-white" : "bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50"}`}
+      className={`min-h-screen relative pt-20 px-6 pb-12 overflow-hidden transition-colors duration-300 ${isDarkMode ? "bg-gray-900 text-white" : "bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50"}`}
     >
       {/* Animated background circles */}
         <div
