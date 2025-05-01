@@ -5,15 +5,13 @@ const ScrollWheel = () => {
   const controls = useAnimation();
   const rotation = useRef(0);
   const rafId = useRef(null);
+  const touchStartY = useRef(null);
 
   useEffect(() => {
-    const handleScroll = (e) => {
-      const scrollDelta = e.deltaY;
+    const handleScroll = (deltaY) => {
+      if (Math.abs(deltaY) < 1) return;
 
-      // Minimal threshold to avoid jitter on small scrolls
-      if (Math.abs(scrollDelta) < 1) return;
-
-      const rotationStep = scrollDelta * 0.3;
+      const rotationStep = deltaY * 0.3;
       rotation.current += rotationStep;
 
       if (rafId.current) cancelAnimationFrame(rafId.current);
@@ -24,30 +22,46 @@ const ScrollWheel = () => {
           transition: {
             type: "spring",
             stiffness: 80,
-            damping: 20
-          }
+            damping: 20,
+          },
         });
       });
     };
 
-    window.addEventListener("wheel", handleScroll);
+    const handleWheel = (e) => handleScroll(e.deltaY);
+
+    const handleTouchStart = (e) => {
+      touchStartY.current = e.touches[0].clientY;
+    };
+
+    const handleTouchMove = (e) => {
+      if (touchStartY.current === null) return;
+      const currentY = e.touches[0].clientY;
+      const deltaY = touchStartY.current - currentY;
+      handleScroll(deltaY);
+      touchStartY.current = currentY;
+    };
+
+    window.addEventListener("wheel", handleWheel);
+    window.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("touchmove", handleTouchMove);
+
     return () => {
-      window.removeEventListener("wheel", handleScroll);
+      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
       if (rafId.current) cancelAnimationFrame(rafId.current);
     };
   }, [controls]);
 
   return (
     <motion.img
-    src="/wheel.png"
-    alt="scroll wheel"
-    initial={{ rotate: 0 }}
-    animate={controls}
-    className="h-[25rem] w-[25rem] opacity-40"
-  />
-  
-
-  
+      src="/wheel.png"
+      alt="scroll wheel"
+      initial={{ rotate: 0 }}
+      animate={controls}
+      className="h-[25rem] w-[25rem] opacity-40"
+    />
   );
 };
 
